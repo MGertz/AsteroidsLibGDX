@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import dk.ringhus.managers.GameKeys;
 import org.lwjgl.opengl.GL20;
 
 public class Game implements ApplicationListener {
@@ -32,6 +33,12 @@ public class Game implements ApplicationListener {
         // clear screen to black
         Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        // Own implementation of keys.
+        // This could most likely be replaced by LibGDX own implementation.
+        // Just use Gdx.input.isKeyJustPressed()
+        GameKeys.update();
+    }
+
     /*
      * Gets called when the window is resized
      */
