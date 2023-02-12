@@ -10,8 +10,8 @@ import org.lwjgl.opengl.GL20;
 
 public class Game implements ApplicationListener {
 
-    private int width;
-    private int height;
+    public static int WIDTH;
+    public static int HEIGHT;
 
     private OrthographicCamera cam;
     private GameStateManager gsm;
@@ -21,8 +21,11 @@ public class Game implements ApplicationListener {
      */
     @Override
     public void create() {
-        this.cam = new OrthographicCamera(this.width, this.height);
-        this.cam.translate(this.width/2, this.height/2);
+        WIDTH = Gdx.graphics.getWidth();
+        HEIGHT = Gdx.graphics.getHeight();
+
+        this.cam = new OrthographicCamera(WIDTH, HEIGHT);
+        this.cam.translate(WIDTH /2, HEIGHT /2);
         this.cam.update();
 
         this.gsm = new GameStateManager();
@@ -40,6 +43,7 @@ public class Game implements ApplicationListener {
 
         this.gsm.update(Gdx.graphics.getDeltaTime());
         this.gsm.draw();
+
         // Own implementation of keys.
         // This could most likely be replaced by LibGDX own implementation.
         // Just use Gdx.input.isKeyJustPressed()
@@ -50,11 +54,7 @@ public class Game implements ApplicationListener {
      * Gets called when the window is resized
      */
     @Override
-    public void resize(int width, int height) {
-        System.out.println("width: " + width + " - height: " + height);
-        this.width = width;
-        this.height = height;
-    }
+    public void resize(int width, int height) {}
 
     /*
      * Used for android phones, used when an incomming call is active, then the game pauses.
@@ -81,10 +81,10 @@ public class Game implements ApplicationListener {
     }
 
     public int getWidth() {
-        return this.width;
+        return this.WIDTH;
     }
 
     public int getHeight() {
-        return this.height;
+        return this.HEIGHT;
     }
 }
