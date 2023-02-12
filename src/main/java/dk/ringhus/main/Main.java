@@ -10,7 +10,7 @@ public class Main {
         cfg.setTitle("Asteroids");
         cfg.setIdleFPS(60);
         cfg.setWindowedMode(800, 450);
-        cfg.setResizable(false);
+        cfg.setResizable(true);
 
         new Lwjgl3Application(new Game(), cfg);
     }
