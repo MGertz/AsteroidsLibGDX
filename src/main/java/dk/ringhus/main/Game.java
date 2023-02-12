@@ -24,16 +24,6 @@ public class Game implements ApplicationListener {
     }
 
     /*
-     * Gets called when the window is resized
-     */
-    @Override
-    public void resize(int width, int height) {
-        System.out.println("width: " + width + " - height: " + height);
-        this.width = width;
-        this.height = height;
-    }
-
-    /*
      * A method called constantly, this is where the game logic should be loaded from.
      */
     @Override
@@ -42,6 +32,14 @@ public class Game implements ApplicationListener {
         // clear screen to black
         Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    /*
+     * Gets called when the window is resized
+     */
+    @Override
+    public void resize(int width, int height) {
+        System.out.println("width: " + width + " - height: " + height);
+        this.width = width;
+        this.height = height;
     }
 
     /*
