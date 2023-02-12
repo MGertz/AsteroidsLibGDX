@@ -2,6 +2,8 @@ package dk.ringhus.main;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import org.lwjgl.opengl.GL20;
 
 public class Game implements ApplicationListener {
@@ -9,12 +11,16 @@ public class Game implements ApplicationListener {
     private int width;
     private int height;
 
+    private OrthographicCamera cam;
+
     /*
      * Method is called once when the game is launched.
      */
     @Override
     public void create() {
-
+        this.cam = new OrthographicCamera(this.width, this.height);
+        this.cam.translate(this.width/2, this.height/2);
+        this.cam.update();
     }
 
     /*
