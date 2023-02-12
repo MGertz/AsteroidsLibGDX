@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import dk.ringhus.managers.GameKeys;
+import dk.ringhus.managers.GameStateManager;
 import org.lwjgl.opengl.GL20;
 
 public class Game implements ApplicationListener {
@@ -13,6 +14,7 @@ public class Game implements ApplicationListener {
     private int height;
 
     private OrthographicCamera cam;
+    private GameStateManager gsm;
 
     /*
      * Method is called once when the game is launched.
@@ -22,6 +24,8 @@ public class Game implements ApplicationListener {
         this.cam = new OrthographicCamera(this.width, this.height);
         this.cam.translate(this.width/2, this.height/2);
         this.cam.update();
+
+        this.gsm = new GameStateManager();
     }
 
     /*
@@ -33,6 +37,9 @@ public class Game implements ApplicationListener {
         // clear screen to black
         Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        this.gsm.update(Gdx.graphics.getDeltaTime());
+        this.gsm.draw();
         // Own implementation of keys.
         // This could most likely be replaced by LibGDX own implementation.
         // Just use Gdx.input.isKeyJustPressed()
